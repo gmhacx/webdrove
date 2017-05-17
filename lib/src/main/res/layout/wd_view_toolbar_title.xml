@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/wd_tb_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="16sp"
+        android:layout_marginBottom="2dp"
+        tools:text="Todas las entradas siempre al mejor precio - Taquilla.com"
+        style="@style/RtlOverlay.Widget.AppCompat.ActionBar.TitleItem"/>
+
+    <TextView
+        android:id="@+id/wd_tb_subtitle"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="12sp"
+        android:drawablePadding="4dp"
+        android:drawableLeft="@drawable/wd_lock_white_12dp"
+        android:drawableStart="@drawable/wd_lock_white_12dp"
+        tools:text="https://www.taquilla.com"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
+
+</merge>
