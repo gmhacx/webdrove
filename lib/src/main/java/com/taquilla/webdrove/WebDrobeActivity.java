@@ -1,6 +1,7 @@
 package com.taquilla.webdrove;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
@@ -24,6 +26,11 @@ public class WebDrobeActivity extends AppCompatActivity implements WebDrobeView 
     @SuppressLint("SetJavaScriptEnabled")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            CookieManager.getInstance().setAcceptCookie(true);
+        }
+
         setContentView(R.layout.wd_activity_web_drove);
 
         Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
@@ -45,6 +52,10 @@ public class WebDrobeActivity extends AppCompatActivity implements WebDrobeView 
         this.webView.setWebChromeClient(new WebDrobeChromeClient(this));
         this.webViewClient = new WebDroveViewClient(this, new WebDrobeDummyUrlHandler());
         this.webView.setWebViewClient(webViewClient);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true);
+        }
 
         WebSettings settings = this.webView.getSettings();
         settings.setJavaScriptEnabled(true);
